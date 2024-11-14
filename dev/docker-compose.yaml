@@ -10,7 +10,8 @@ services:
     volumes:
       - elevar_db:/var/lib/postgresql/data
       - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
+
   minio:
     container_name: elevar_storage
     image: quay.io/minio/minio
@@ -25,6 +26,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     command: server /data --console-address ":9001"
+
   minio_config:
     container_name: elevar_storage_config
     image: minio/mc
